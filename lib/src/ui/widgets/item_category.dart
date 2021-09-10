@@ -23,7 +23,7 @@ ItemCategory(ItemCategories itemCategories){
           Container(
             height: 35,
             width: 90,
-            margin: const EdgeInsets.only(top: 8),
+            //margin: const EdgeInsets.only(top: 8),
             child: Center(child: Text(item.title, style: TextStyle(fontSize: 10.0)))),
         ],
       ),

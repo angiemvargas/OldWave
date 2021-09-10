@@ -19,7 +19,7 @@ class Search extends StatelessWidget{
               child: Icon(Icons.search, color: Color(0xff772ce8), size: 30, ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Text('Estoy buscando ...'),
             )
           ],),
