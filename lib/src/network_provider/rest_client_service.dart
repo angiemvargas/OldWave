@@ -3,9 +3,9 @@ import 'dart:async';
 
 class RestClientService {
   final _headers = {'Content-Type': 'application/json'};
-  Future<GenericResponse> get(String base, String path) async {
+  Future<GenericResponse> get(Uri uri) async {
     try {
-      final response =  await http.get(base + path, headers: _headers);
+      final response =  await http.get(uri, headers: _headers);
       if(response.statusCode == 200) {
         return _genericResponseFromJson(0, "", response.body);
       } else {

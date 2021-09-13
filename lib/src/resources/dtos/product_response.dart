@@ -22,7 +22,7 @@ class ProductResponse {
     name = json['name'];
     brand = json['brand'];
     thumbnail = json['thumbnail'];
-    city = json['city'];
+    city = new CityResponse.fromJson(json['city']);
     price = json['price'];
     rating = json['rating'];
   }

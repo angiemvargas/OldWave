@@ -3,7 +3,7 @@ import 'package:oldwave/src/resources/dtos/product_response.dart';
 class ProductListResponse {
   String query = '';
   int total = 0;
-  List<ProductResponse> items = List.empty();
+  List<ProductResponse> items = <ProductResponse>[];
   SellerResponse seller = SellerResponse(0, '');
 
   ProductListResponse(
@@ -16,9 +16,10 @@ class ProductListResponse {
   ProductListResponse.fromJson(Map<String, dynamic> json){
     query = json['query'];
     total = json['total'];
-    items = json['items'];
-    seller = json['seller'];
+    json['items'].forEach((v) => items.add(new ProductResponse.fromJson(v)));
+    seller = new SellerResponse.fromJson(json['seller']); 
   }
+  
 }
 
 class SellerResponse {
