@@ -1,11 +1,11 @@
 class ProductResponse {
-  int id;
-  String name;
-  String brand;
-  String thumbnail;
-  CityResponse city;
-  double price;
-  double rating;
+  int id = 0;
+  String name = '';
+  String brand = '';
+  String thumbnail = '';
+  CityResponse city = CityResponse(0, '');
+  double price = 0.0;
+  double rating  = 0.0;
 
   ProductResponse(
     this.id,
@@ -16,15 +16,30 @@ class ProductResponse {
     this.price,
     this.rating,
   );
+
+  ProductResponse.fromJson(Map<String, dynamic> json){
+    id = json['id'];
+    name = json['name'];
+    brand = json['brand'];
+    thumbnail = json['thumbnail'];
+    city = json['city'];
+    price = json['price'];
+    rating = json['rating'];
+  }
 }
 
 
 class CityResponse {
-  int id;
-  String name;
+  int id = 0;
+  String name = '';
 
   CityResponse(
     this.id,
     this.name
   );
+
+  CityResponse.fromJson(Map<String, dynamic> json){
+    id = json['id'];
+    name = json['name'];
+  }
 }
