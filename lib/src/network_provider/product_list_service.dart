@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
 import 'package:oldwave/src/network_provider/constant.dart';
 import 'package:oldwave/src/network_provider/rest_client_service.dart';
 import 'package:oldwave/src/resources/dtos/product_list_response.dart';

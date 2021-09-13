@@ -7,13 +7,14 @@ import 'package:oldwave/src/ui/widgets/general_information.dart';
 import 'package:oldwave/src/ui/widgets/nav_bar.dart';
 import 'package:oldwave/src/ui/widgets/quality_option.dart';
 import 'package:oldwave/src/ui/widgets/search.dart';
+import 'package:oldwave/src/use_case/product_list_usecase.dart';
 
 class Home extends StatelessWidget{
 
-  ProductListService service = ProductListService();
+  ProductListUseCase service = ProductListUseCase();
 
   void _service (){
-    service.getProductList('localhost:8080', 'x');
+    service.getProductListByProduct('x');
   }
 
   @override
