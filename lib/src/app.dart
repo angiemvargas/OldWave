@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oldwave/src/routes/routes.dart';
 import 'package:oldwave/src/ui/home.dart';
 
 class App extends StatelessWidget {
@@ -6,7 +7,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'OldWave',
-      home: Home()
+      home: Home(),
+      routes: getApplicationRoutes(),
     );
   }
 }
