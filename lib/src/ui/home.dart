@@ -9,11 +9,10 @@ import 'package:oldwave/src/ui/widgets/quality_option.dart';
 import 'package:oldwave/src/ui/widgets/search.dart';
 import 'package:oldwave/src/use_case/product_list_usecase.dart';
 
-class Home extends StatelessWidget{
-
+class Home extends StatelessWidget {
   ProductListUseCase service = ProductListUseCase();
 
-  void _service (){
+  void _service() {
     service.getProductListByProduct('x');
   }
 
@@ -24,14 +23,24 @@ class Home extends StatelessWidget{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SafeArea(child: NavBar(),),
+            SafeArea(
+              child: NavBar(),
+            ),
             Search(),
             BannerDiscount(),
             FloatingActionButton(
-              onPressed: _service),
+              onPressed: _service,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Text('¿Qué estás buscando hoy?', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff772ce8), fontSize: 18.0)),
+              child: Text(
+                '¿Qué estás buscando hoy?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff772ce8),
+                  fontSize: 18.0,
+                ),
+              ),
             ),
             CarruselCategories(),
             QualityOption(),
@@ -40,7 +49,7 @@ class Home extends StatelessWidget{
               child: GeneralInformation(),
             ),
           ],
-          ),
+        ),
       ),
     );
   }
