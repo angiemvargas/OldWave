@@ -8,6 +8,12 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'OldWave', home: Home());
+    return MaterialApp(
+      title: 'OldWave',
+      home: Home(),
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
+    );
   }
 }
