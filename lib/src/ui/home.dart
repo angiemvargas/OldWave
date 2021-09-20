@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/models/repository/product_list_repository.dart';
-import 'package:oldwave/src/network_provider/product_list_service.dart';
-import 'package:oldwave/src/ui/widgets/Banner_discount.dart';
-import 'package:oldwave/src/ui/widgets/carrusel_categories.dart';
-import 'package:oldwave/src/ui/widgets/general_information.dart';
-import 'package:oldwave/src/ui/widgets/nav_bar.dart';
-import 'package:oldwave/src/ui/widgets/quality_option.dart';
-import 'package:oldwave/src/ui/widgets/search.dart';
-import 'package:oldwave/src/use_case/product_list_usecase.dart';
+import 'package:oldwave/src/blocs/home_bloc.dart';
+import 'package:oldwave/src/di/injector.dart';
+import 'base_state.dart';
+import 'widgets/banner_discount.dart';
+import 'widgets/carrusel_categories.dart';
+import 'widgets/general_information.dart';
+import 'widgets/nav_bar.dart';
+import 'widgets/quality_option.dart';
+import 'widgets/search.dart';
 
-class Home extends StatelessWidget{
+class Home extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-  ProductListUseCase service = ProductListUseCase();
 
-  void _service (){
-    service.getProductListByProduct('x');
+class _HomePageState extends BaseState<Home, HomeBloc> {
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -42,6 +46,19 @@ class Home extends StatelessWidget{
           ],
           ),
       ),
+    );
+  }
+
+   void _service (){
+
+     bloc!.getProductListByProduct("1");
+    
+  }
+
+  @override
+  HomeBloc getBlocInstance() {
+    return HomeBloc(
+      Injector().provideLoginUseCase(),
     );
   }
 }
