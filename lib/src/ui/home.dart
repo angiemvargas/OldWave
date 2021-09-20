@@ -14,7 +14,6 @@ class Home extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-
 class _HomePageState extends BaseState<Home, HomeBloc> {
   @override
   void initState() {
@@ -28,14 +27,24 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SafeArea(child: NavBar(),),
+            SafeArea(
+              child: NavBar(),
+            ),
             Search(),
             BannerDiscount(),
             FloatingActionButton(
-              onPressed: _service),
+              onPressed: _service,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Text('¿Qué estás buscando hoy?', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff772ce8), fontSize: 18.0)),
+              child: Text(
+                '¿Qué estás buscando hoy?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xff772ce8),
+                  fontSize: 18.0,
+                ),
+              ),
             ),
             CarruselCategories(),
             QualityOption(),
@@ -44,15 +53,13 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
               child: GeneralInformation(),
             ),
           ],
-          ),
+        ),
       ),
     );
   }
 
    void _service (){
-
-     bloc!.getProductListByProduct("1");
-    
+     bloc!.getProductListByProduct("1"); 
   }
 
   @override
