@@ -30,7 +30,7 @@ class AddToCart extends StatelessWidget {
             ),
             child: IconButton(
               icon: SvgPicture.asset(
-                "/home/sebastian/Documentos/empresariales/project-final/OldWave/lib/src/ui/material_ui/icons/cart-falso.png",
+                "ui/material_ui/icons/cart-falso.png",
               ),
               onPressed: () {},
             ),

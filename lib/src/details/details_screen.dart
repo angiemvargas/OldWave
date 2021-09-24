@@ -23,13 +23,6 @@ class DetailScreen extends StatelessWidget {
     return AppBar(
       backgroundColor: Color(0xff772ce8),
       elevation: 0,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          "s",
-          color: Colors.black,
-        ), 
-        onPressed: () => Navigator.pop(context)
-      ),
     );
   }
   
