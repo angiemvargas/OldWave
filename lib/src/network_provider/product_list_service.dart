@@ -9,7 +9,7 @@ class ProductListService {
   RestClientService restClientService = RestClientService() ;
   
   Future<ProductListResponse> getProductList(String baseUrl, String product) async {
-    var uri = Uri.http(baseUrl, Constant.path_product_list, {'q': product});
+    var uri = Uri.https(baseUrl, Constant.path_product_list, {'q': product});
     GenericResponse response = await restClientService.get(uri);
     return _productListResponseFromJson((response.statusCode == 0) ? response.data : null);
   }
