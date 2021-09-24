@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:oldwave/src/details/components/body.dart';
 import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/di/injector.dart';
+import 'package:oldwave/src/ui/material_ui/constants.dart';
 import 'package:oldwave/src/ui/widgets/search.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailScreen extends StatelessWidget {
-  //final Product product;
+  // final Product product;
+  // const DetailScreen({Key key, this.product}) : super(key: key);
+  
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -18,26 +21,15 @@ class DetailScreen extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color(0xff772ce8),
       elevation: 0,
       leading: IconButton(
         icon: SvgPicture.asset(
-        '/home/sebastian/Documentos/empresariales/project-final/OldWave/web/icons/Icon-192.png',
-        color:Colors.white,
+          "s",
+          color: Colors.black,
         ), 
         onPressed: () => Navigator.pop(context)
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset("iconSearcg"), 
-          onPressed: null
-        ),
-        IconButton(
-          icon: SvgPicture.asset("iconcart.png"), 
-          onPressed: null 
-        ),
-          SizedBox(width: 50/2,)  
-      ],
     );
   }
   
