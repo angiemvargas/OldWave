@@ -10,7 +10,7 @@ class DetailProductService {
   RestClientService restClientService = RestClientService() ;
   
   Future<DetailProduct> getDetailProduct(String baseUrl, String idProduct) async {
-    var uri = Uri.http(baseUrl, Constant.path_detail_product);
+    var uri = Uri.https(baseUrl, Constant.path_detail_product+idProduct);
     GenericResponse response = await restClientService.get(uri);
     return _detailProductResponseFromJson((response.statusCode == 0) ? response.data : null);
   }

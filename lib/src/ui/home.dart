@@ -59,13 +59,15 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
   }
 
    void _service (){
-     bloc!.getProductListByProduct("1"); 
+     //bloc!.getProductListByProduct("1"); 
+     bloc!.getDetailPrductById('1', '3');
   }
 
   @override
   HomeBloc getBlocInstance() {
     return HomeBloc(
-      Injector().provideLoginUseCase(),
+      Injector().provideProductListUseCase(),
+      Injector().providerDetailProductUseCase()
     );
   }
 }
