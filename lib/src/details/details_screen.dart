@@ -24,17 +24,18 @@ class DetailScreen extends StatelessWidget {
         icon: SvgPicture.asset(
         '/home/sebastian/Documentos/empresariales/project-final/OldWave/web/icons/Icon-192.png',
         color:Colors.white,
-        ), onPressed: () => Navigator.pop(context)
+        ), 
+        onPressed: () => Navigator.pop(context)
       ),
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset("iconSearcg"), 
           onPressed: null
-          ),
+        ),
         IconButton(
           icon: SvgPicture.asset("iconcart.png"), 
           onPressed: null 
-          ),
+        ),
           SizedBox(width: 50/2,)  
       ],
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/details/components/details_screen.dart';
+import 'package:oldwave/src/details/details_screen.dart';
 import 'package:oldwave/src/ui/home.dart';
 
 void main() {
