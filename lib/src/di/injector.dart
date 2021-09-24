@@ -1,6 +1,4 @@
-
-
-import 'package:oldwave/src/resources/product_list_adapter.dart';
+import 'package:oldwave/src/use_case/detail_product_usecase.dart';
 import 'package:oldwave/src/use_case/product_list_usecase.dart';
 
 class Injector {
@@ -15,7 +13,11 @@ class Injector {
 
   Injector._();
 
-  ProductListUseCase provideLoginUseCase() {
+  ProductListUseCase provideProductListUseCase() {
     return ProductListUseCase();
+  }
+
+  DetailProductUseCase providerDetailProductUseCase(){
+    return DetailProductUseCase();
   }
 }
