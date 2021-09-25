@@ -21,7 +21,7 @@ class Product {
 
   @override
   String toString() {
-    return "(id: $id, name: $name, brand: $brand, thumbnail: $thumbnail, city: $city , price: $price, rating: $rating, seller: $seller)";
+    return "(id: $id, name: $name, brand: $brand, thumbnail: $thumbnail, city: $city , price: $price, rating: $rating, seller: ${seller.name})";
   }
 }
 
