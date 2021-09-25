@@ -34,10 +34,11 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
             Search(),
             BannerDiscount(),
             FloatingActionButton(
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DetailScreen(), 
-                  ));
+              onPressed: () {
+                _service();
+                // Navigator.of(context).push(MaterialPageRoute(
+                //   builder: (context) => DetailScreen(),
+                //   ));
               },
             ),
             Padding(
@@ -63,16 +64,16 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
     );
   }
 
-   void _service (){
-     //bloc!.getProductListByProduct("1"); 
-     bloc!.getDetailPrductById('1', '3');
+  void _service() {
+    bloc!.getProductListByProduct("iphone");
+    // bloc!.getDetailPrductById('1', '3');
   }
 
   @override
   HomeBloc getBlocInstance() {
     return HomeBloc(
       Injector().provideProductListUseCase(),
-      Injector().providerDetailProductUseCase()
+      Injector().providerDetailProductUseCase(),
     );
   }
 }
