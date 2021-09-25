@@ -65,7 +65,12 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
   }
 
   void _service() {
-    bloc!.getProductListByProduct("iphone");
+    bloc!.getProductListByProduct("iphone").then((productList) {
+      productList.forEach((element) {
+        print(element.toString());
+      });
+    }).catchError((error) => print(error));
+
     // bloc!.getDetailPrductById('1', '3');
   }
 

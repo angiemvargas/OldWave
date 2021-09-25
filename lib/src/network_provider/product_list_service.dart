@@ -21,7 +21,7 @@ class ProductListService {
     // var uri = Uri.http(baseUrl, aux, {'q': product});
     GenericResponse response = await restClientService.get(uri);
     return _productListResponseFromJson(
-        (response.statusCode == 200) ? response.data : null);
+        (response.statusCode == 0) ? response.data : null);
   }
 
   ProductListResponse _productListResponseFromJson(json) {
