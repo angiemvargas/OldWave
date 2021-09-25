@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
+import 'package:oldwave/src/details/details_screen.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'base_state.dart';
 import 'widgets/banner_discount.dart';
@@ -33,7 +34,11 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
             Search(),
             BannerDiscount(),
             FloatingActionButton(
-              onPressed: _service,
+              onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => DetailScreen(), 
+                  ));
+              },
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),

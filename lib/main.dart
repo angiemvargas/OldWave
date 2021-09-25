@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 // import 'package:flutter_cart/flutter_cart.dart';
 // import 'package:flutter_cart/model/cart_response_wrapper.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
+import 'package:oldwave/src/details/details_screen.dart';
 import 'package:oldwave/src/routes/routes.dart';
 import 'package:oldwave/src/ui/home.dart';
 
