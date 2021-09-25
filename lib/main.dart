@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:oldwave/src/details/details_screen.dart';
+import 'package:oldwave/src/routes/routes.dart';
 import 'package:oldwave/src/ui/home.dart';
 
 void main() {
@@ -11,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'OldWave',
       home: Home(),
+      routes: getApplicationRoutes(),
       theme: ThemeData(
         fontFamily: 'Poppins',
       ),
