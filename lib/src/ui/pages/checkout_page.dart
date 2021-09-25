@@ -12,7 +12,7 @@ class CheckoutPage extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Container(
-        color: Colors.yellow,
+        color: Theme.of(context).primaryColor,
         child: Column(
           children: [
             Expanded(

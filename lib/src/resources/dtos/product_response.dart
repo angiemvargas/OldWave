@@ -5,7 +5,7 @@ class ProductResponse {
   String thumbnail = '';
   CityResponse city = CityResponse(0, '');
   double price = 0.0;
-  double rating  = 0.0;
+  double rating = 0.0;
 
   ProductResponse(
     this.id,
@@ -17,17 +17,18 @@ class ProductResponse {
     this.rating,
   );
 
-  ProductResponse.fromJson(Map<String, dynamic> json){
+  ProductResponse.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     brand = json['brand'];
     thumbnail = json['thumbnail'];
-    city = new CityResponse.fromJson(json['city']);
+    city = json['city'] == null
+        ? CityResponse(0, 'unkonw city')
+        : CityResponse.fromJson(json['city']);
     price = json['price'];
     rating = json['rating'];
   }
 }
-
 
 class CityResponse {
   int id = 0;
@@ -35,10 +36,10 @@ class CityResponse {
 
   CityResponse(
     this.id,
-    this.name
+    this.name,
   );
 
-  CityResponse.fromJson(Map<String, dynamic> json){
+  CityResponse.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }
