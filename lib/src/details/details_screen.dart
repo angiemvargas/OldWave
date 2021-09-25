@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/details/components/body.dart';
-import 'package:oldwave/src/models/product.dart';
-import 'package:oldwave/src/di/injector.dart';
-import 'package:oldwave/src/ui/material_ui/constants.dart';
-import 'package:oldwave/src/ui/widgets/search.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DetailScreen extends StatelessWidget {
   // final Product product;
   // const DetailScreen({Key key, this.product}) : super(key: key);
-  
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.white,
-      appBar:buildAppBar(context),
+      backgroundColor: Colors.white,
+      appBar: buildAppBar(context),
       body: Body(),
     );
   }
@@ -25,5 +20,4 @@ class DetailScreen extends StatelessWidget {
       elevation: 0,
     );
   }
-  
 }

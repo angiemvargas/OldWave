@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 
-
-
 class Description extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
