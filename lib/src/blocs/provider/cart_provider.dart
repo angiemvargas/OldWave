@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cart/model/cart_model.dart';
 import 'package:flutter_cart/model/cart_response_wrapper.dart';
 import 'package:flutter_cart/flutter_cart.dart';
-import 'package:oldwave/src/models/item.dart';
+import 'package:oldwave/src/models/detail_product.dart';
 
 class CartProvider extends ChangeNotifier {
   var flutterCart = FlutterCart();
   late CartResponseWrapper cartResponseWrapper;
-  addToCart(Item _productElement, {int funcQuantity = 0}) async {
+  addToCart(DetailProduct _productElement, {int funcQuantity = 0}) async {
     cartResponseWrapper = flutterCart.addToCart(
         productId: _productElement.id,
         unitPrice: _productElement.price,
