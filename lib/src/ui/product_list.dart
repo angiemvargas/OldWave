@@ -27,6 +27,7 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
               child: NavBar(),
             ),
             Search(),
+            FloatingActionButton(onPressed: _service),
             SizedBox(
               height: MediaQuery.of(context).size.height - 90, // constrain height
               child: ProductsWidget(),
@@ -39,7 +40,7 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
   }
 
     void _service() {
-    bloc!.getProductListByProduct("iphone");
+    print(bloc!.getProductListByProduct("iphone"));
     // bloc!.getDetailPrductById('1', '3');
   }
 
