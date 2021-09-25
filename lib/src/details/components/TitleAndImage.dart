@@ -25,8 +25,8 @@ class TitleAndImage extends StatelessWidget {
             "NEVERA HACEB",
             style: Theme.of(context)
                 .textTheme
-                .headline4
-                //.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                .headline4!
+                .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: oldWaveDefaultPaddin),
           Row(
@@ -34,11 +34,11 @@ class TitleAndImage extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   children: [
-                    TextSpan(text: "Price\n"),
+                    TextSpan(text: "Price:\n"),
                     TextSpan(
                       text: "25900",
-                      style: Theme.of(context).textTheme.headline4//.copyWith(
-                          //color: Colors.white, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headline4!
+                      .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -48,7 +48,7 @@ class TitleAndImage extends StatelessWidget {
                 child: Hero(
                   tag: "nevera",
                   child: Image.asset(
-                    "/home/sebastian/Documentos/empresariales/project-final/OldWave/lib/src/ui/material_ui/icons/negro.png",
+                    "assets/imgs/neveraproduct.jpg",
                     fit: BoxFit.fill,
                   ),
                 ),

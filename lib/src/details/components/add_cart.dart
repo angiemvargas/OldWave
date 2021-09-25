@@ -25,12 +25,13 @@ class AddToCart extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               border: Border.all(
-          
+                color:oldWaveColor
               ),
             ),
             child: IconButton(
               icon: SvgPicture.asset(
-                "ui/material_ui/icons/cart-falso.png",
+                "assets/imgs/carrito-icon.svg",
+                
               ),
               onPressed: () {},
             ),
@@ -38,16 +39,23 @@ class AddToCart extends StatelessWidget {
           Expanded(
             child: SizedBox(
               height: 50,
-              child: TextButton(
-                onPressed: () {},
+              child: OutlinedButton( 
+                onPressed: () {}, 
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(
+                    width: 1.0, 
+                    color: oldWaveColor, 
+                    style: BorderStyle.solid)
+                    ),
                 child: Text(
                   "Buy  Now".toUpperCase(),
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: oldWaveColor,
+                    color: oldWaveColor
                   ),
                 ),
+                  
               ),
             ),
           ),
