@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 
 class TitleAndImage extends StatelessWidget {
@@ -37,8 +36,10 @@ class TitleAndImage extends StatelessWidget {
                     TextSpan(text: "Price:\n"),
                     TextSpan(
                       text: "25900",
-                      style: Theme.of(context).textTheme.headline4!
-                      .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.headline4!.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                   ],
                 ),
@@ -60,4 +61,3 @@ class TitleAndImage extends StatelessWidget {
     );
   }
 }
-
