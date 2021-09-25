@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:oldwave/src/blocs/provider/cart_provider.dart';
+import 'package:oldwave/src/models/detail_product.dart';
+import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
+import 'package:provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
   // const AddToCart({
@@ -12,6 +16,16 @@ class AddToCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DetailProduct product = DetailProduct(
+        1,
+        'name',
+        'brand',
+        ['pictures'],
+        City(1, 'cityname'),
+        10.0,
+        5.0,
+        'description',
+        SellerWithLogo(5, 'seller_name', 'logo'));
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: oldWaveDefaultPaddin),
       child: Row(
@@ -30,33 +44,69 @@ class AddToCart extends StatelessWidget {
               icon: SvgPicture.asset(
                 "assets/imgs/carrito-icon.svg",
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, 'checkout');
+              },
             ),
           ),
           Expanded(
             child: SizedBox(
               height: 50,
-              child: OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(
-                    width: 1.0,
-                    color: oldWaveColor,
-                    style: BorderStyle.solid,
-                  ),
-                ),
-                child: Text(
-                  "Buy  Now".toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    color: oldWaveColor,
-                  ),
-                ),
-              ),
+              child: Consumer<CartProvider>(builder: (context, cart, child) {
+                return _AddButton(
+                  product: product,
+                );
+              }),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _AddButton extends StatefulWidget {
+  final DetailProduct product;
+
+  const _AddButton({
+    required this.product,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  __AddButtonState createState() => __AddButtonState();
+}
+
+class __AddButtonState extends State<_AddButton> {
+  late CartProvider _cartProvider;
+
+  @override
+  void initState() {
+    _cartProvider = Provider.of<CartProvider>(context, listen: false);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: () {
+        _cartProvider.addToCart(widget.product);
+        setState(() {});
+      },
+      style: OutlinedButton.styleFrom(
+        side: BorderSide(
+          width: 1.0,
+          color: oldWaveColor,
+          style: BorderStyle.solid,
+        ),
+      ),
+      child: Text(
+        "Buy  Now".toUpperCase(),
+        style: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.bold,
+          color: oldWaveColor,
+        ),
       ),
     );
   }
