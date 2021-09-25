@@ -1,15 +1,13 @@
-
-
 import 'package:oldwave/src/models/product.dart';
 
-class DetailProduct{
+class DetailProduct {
   int id = 0;
   String name = '';
   String brand = '';
   List<String> pictures = <String>[];
   City city = City(0, '');
   double price = 0.0;
-  double rating  = 0.0;
+  double rating = 0.0;
   String description = '';
   SellerWithLogo seller = SellerWithLogo(0, '', '');
 
@@ -22,10 +20,10 @@ class DetailProduct{
     this.price,
     this.rating,
     this.description,
-    this.seller
+    this.seller,
   );
 
-  DetailProduct.fromJson(Map<String, dynamic> json){
+  DetailProduct.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     brand = json['brand'];
@@ -36,10 +34,9 @@ class DetailProduct{
     description = json['description'];
     seller = new SellerWithLogo.fromJson(json['seller']);
   }
-
 }
 
-class SellerWithLogo{
+class SellerWithLogo {
   int id = 0;
   String name = '';
   String logo = '';
@@ -47,10 +44,10 @@ class SellerWithLogo{
   SellerWithLogo(
     this.id,
     this.name,
-    this.logo
+    this.logo,
   );
 
-  SellerWithLogo.fromJson(Map<String, dynamic> json){
+  SellerWithLogo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     logo = json['logo'];
