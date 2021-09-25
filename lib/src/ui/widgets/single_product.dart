@@ -3,11 +3,15 @@ import 'package:oldwave/src/models/product.dart';
 
 class SingleProductWidget extends StatelessWidget {
   final Product product;
+  final VoidCallback press;
 
-  const SingleProductWidget({required Key key, required this.product}) : super(key: key);
+  const SingleProductWidget({required Key key, required this.product, required this.press}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
+
+    return GestureDetector(
+    onTap: press,
+    child: Container(
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
@@ -71,6 +75,7 @@ class SingleProductWidget extends StatelessWidget {
           ],
         ),
       )
-    );
+    )
+  );
   }
 }

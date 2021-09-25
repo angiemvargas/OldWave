@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/widgets/single_product.dart';
+import 'package:oldwave/src/details/details_screen.dart';
+
 
 class ProductsWidget extends StatelessWidget {
 
@@ -20,7 +22,12 @@ class ProductsWidget extends StatelessWidget {
         Product(4,"White Shoes","Nike","http://http2.mlstatic.com/D_804312-MLA44405465106_122020-I.jpg",new City(1, "Medellin"),12.0,5,new Seller(1, "Karol")
         )
       ].map((Product product) {
-        return SingleProductWidget(product: product, key: new Key("key"));
+        return SingleProductWidget(product: product, key: new Key("key"), press: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailScreen(),
+                          ))
+        );
       }).toList());
         
   }

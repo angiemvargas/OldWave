@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'widgets/products.dart';
 import 'widgets/nav_bar.dart';
 import 'widgets/search.dart';
-import 'package:oldwave/src/models/product.dart';
+import 'package:oldwave/src/blocs/home_bloc.dart';
+import 'package:oldwave/src/di/injector.dart';
+import 'base_state.dart';
 
 class ProductList extends StatefulWidget {
   const ProductList({ Key? key }) : super(key: key);
@@ -11,7 +13,7 @@ class ProductList extends StatefulWidget {
   _ProductListState createState() => _ProductListState();
 }
 
-class _ProductListState extends State<ProductList> {
+class _ProductListState extends BaseState<ProductList, HomeBloc> {
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,19 @@ class _ProductListState extends State<ProductList> {
             
           )
         ));
+  }
+
+    void _service() {
+    bloc!.getProductListByProduct("iphone");
+    // bloc!.getDetailPrductById('1', '3');
+  }
+
+  @override
+  HomeBloc getBlocInstance() {
+    return HomeBloc(
+      Injector().provideProductListUseCase(),
+      Injector().providerDetailProductUseCase(),
+    );
   }
 
 }
