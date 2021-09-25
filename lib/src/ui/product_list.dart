@@ -5,8 +5,11 @@ import 'widgets/search.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'base_state.dart';
+import 'package:oldwave/src/models/product.dart';
+
 
 class ProductList extends StatefulWidget {
+  
   const ProductList({ Key? key }) : super(key: key);
 
   @override
@@ -27,10 +30,9 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
               child: NavBar(),
             ),
             Search(),
-            FloatingActionButton(onPressed: _service),
             SizedBox(
               height: MediaQuery.of(context).size.height - 90, // constrain height
-              child: ProductsWidget(),
+              child: ProductsWidget(products: bloc!.getProductListByProduct("iphone")),
             )
 
           ],
@@ -39,9 +41,13 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
         ));
   }
 
-    void _service() {
-    print(bloc!.getProductListByProduct("iphone"));
-    // bloc!.getDetailPrductById('1', '3');
+  void _service() {
+    // List<Product> list= [];
+    bloc!.getProductListByProduct("iphone").then((productList) {
+      productList.forEach((element) {
+        //list.add(element);
+      });
+    }).catchError((error) => print(error));
   }
 
   @override

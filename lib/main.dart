@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'OldWave',
-        home: ProductList(),//Home(),
+        home: Home(),
         routes: getApplicationRoutes(),
         theme: appTheme,
       ),

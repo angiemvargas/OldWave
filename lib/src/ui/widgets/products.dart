@@ -1,10 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/widgets/single_product.dart';
 import 'package:oldwave/src/details/details_screen.dart';
+import 'package:oldwave/src/ui/base_state.dart';
 
 
 class ProductsWidget extends StatelessWidget {
+  final Future<List<Product>> products;
+  List<Product> list = [];
+
+  ProductsWidget({Key ? key, required this.products}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,8 @@ class ProductsWidget extends StatelessWidget {
         Product(4,"White Shoes","Nike","http://http2.mlstatic.com/D_804312-MLA44405465106_122020-I.jpg",new City(1, "Medellin"),12.0,5,new Seller(1, "Karol")
         )
       ].map((Product product) {
-        return SingleProductWidget(product: product, key: new Key("key"), press: () => Navigator.push(
+        print(product);
+        return SingleProductWidget(product: product, press: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DetailScreen(),
@@ -30,5 +38,13 @@ class ProductsWidget extends StatelessWidget {
         );
       }).toList());
         
+  }
+
+  void _service(){
+    products.then((productList) {
+      productList.forEach((element) {
+        list.add(element);
+      });
+    }).catchError((error) => print(error));
   }
 }

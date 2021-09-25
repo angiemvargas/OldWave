@@ -5,7 +5,7 @@ class SingleProductWidget extends StatelessWidget {
   final Product product;
   final VoidCallback press;
 
-  const SingleProductWidget({required Key key, required this.product, required this.press}) : super(key: key);
+  const SingleProductWidget({Key ? key, required this.product, required this.press}) : super(key: key);
   @override
   Widget build(BuildContext context) {
 
