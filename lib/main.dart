@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'OldWave',
+        debugShowCheckedModeBanner: false,
         home: Home(),
         routes: getApplicationRoutes(),
         theme: appTheme,
