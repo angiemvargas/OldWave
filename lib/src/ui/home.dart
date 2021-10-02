@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
-import 'package:oldwave/src/details/details_screen.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'package:oldwave/src/ui/product_list.dart';
 import 'base_state.dart';
@@ -17,6 +16,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomePageState extends BaseState<Home, HomeBloc> {
+
   @override
   void initState() {
     super.initState();
@@ -32,15 +32,8 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
             SafeArea(
               child: NavBar(),
             ),
-            Search(),
+            Search(onService: _service),
             BannerDiscount(),
-            FloatingActionButton(
-              onPressed: () {
-                 Navigator.of(context).push(MaterialPageRoute(
-                   builder: (context) => ProductList(),
-                  ));
-              },
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
@@ -64,21 +57,18 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
     );
   }
 
-  void _service() {
-    bloc!.getProductListByProduct("iphone").then((productList) {
-      productList.forEach((element) {
-        print(element.toString());
-      });
+  void _service(String valor) {
+    bloc!.getProductListByProduct(valor).then((productList) {
+      Navigator.of(context)
+      .push(MaterialPageRoute(
+        builder: (context) => ProductList(list: productList)));
     }).catchError((error) => print(error));
-
-    // bloc!.getDetailPrductById('1', '3');
   }
 
   @override
   HomeBloc getBlocInstance() {
     return HomeBloc(
-      Injector().provideProductListUseCase(),
-      Injector().providerDetailProductUseCase(),
+      Injector().provideProductListUseCase()
     );
   }
 }

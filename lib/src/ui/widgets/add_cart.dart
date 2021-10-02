@@ -2,30 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/models/detail_product.dart';
-import 'package:oldwave/src/models/product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 import 'package:provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
-  // const AddToCart({
-  //   Key key,
-  //   @required this.product,
-  // }) : super(key: key);
+  DetailProduct product;
 
-  // final Product product;
+  AddToCart({required this.product});
 
   @override
   Widget build(BuildContext context) {
-    DetailProduct product = DetailProduct(
-        1,
-        'name',
-        'brand',
-        ['pictures'],
-        City(1, 'cityname'),
-        10.0,
-        5.0,
-        'description',
-        SellerWithLogo(5, 'seller_name', 'logo'));
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: oldWaveDefaultPaddin),
       child: Row(
@@ -68,10 +54,7 @@ class AddToCart extends StatelessWidget {
 class _AddButton extends StatefulWidget {
   final DetailProduct product;
 
-  const _AddButton({
-    required this.product,
-    Key? key,
-  }) : super(key: key);
+  _AddButton({required this.product});
 
   @override
   __AddButtonState createState() => __AddButtonState();

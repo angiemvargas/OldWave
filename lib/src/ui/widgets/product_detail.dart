@@ -1,13 +1,17 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/details/components/Description.dart';
+import 'package:oldwave/src/ui/widgets/title_and_image.dart';
+import 'package:oldwave/src/ui/widgets/description.dart';
+import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 import 'add_cart.dart';
-import 'TitleAndImage.dart';
 
-class Body extends StatelessWidget {
-  // final Product product;
+class ProductDetail extends StatelessWidget {
 
-  // const Body({required Key key, required this.product}) : super(key: key);
+  DetailProduct product;
+
+  ProductDetail({required this.product});
+
   @override
   Widget build(BuildContext context) {
     // It provide us total height and width
@@ -36,12 +40,12 @@ class Body extends StatelessWidget {
                   ),
                   child: Column(
                     children: <Widget>[
-                      Description(),
-                      AddToCart(),
+                      Description(product: product,),
+                      AddToCart(product: product,),
                     ],
                   ),
                 ),
-                TitleAndImage()
+                TitleAndImage(product: product)
               ],
             ),
           )

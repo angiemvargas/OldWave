@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
+import 'package:intl/intl.dart';
 
 class TitleAndImage extends StatelessWidget {
-  // const TitleAndImage({
-  //   required Key key,
-  //   required this.product,
-  // }) : super(key: key);
+  
+  DetailProduct product;
+  final formatCurrency = new NumberFormat.simpleCurrency();
 
-  // final Product product;
+  TitleAndImage({required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class TitleAndImage extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
           Text(
-            "NEVERA HACEB",
+            product.name,
             style: Theme.of(context)
                 .textTheme
                 .headline4!
@@ -30,30 +31,14 @@ class TitleAndImage extends StatelessWidget {
           SizedBox(height: oldWaveDefaultPaddin),
           Row(
             children: <Widget>[
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(text: "Price:\n"),
-                    TextSpan(
-                      text: "25900",
-                      style: Theme.of(context).textTheme.headline4!.copyWith(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
+              Text('${formatCurrency.format(product.price)}'),
               SizedBox(width: oldWaveDefaultPaddin),
               Expanded(
-                child: Hero(
-                  tag: "nevera",
-                  child: Image.asset(
-                    "assets/imgs/neveraproduct.jpg",
+                child: Image.network(
+                    product.pictures.first,
                     fit: BoxFit.fill,
                   ),
                 ),
-              )
             ],
           )
         ],
