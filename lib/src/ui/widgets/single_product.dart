@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 class SingleProductWidget extends StatelessWidget {
   final Product product;
   final VoidCallback press;
-  final formatCurrency = new NumberFormat.simpleCurrency();
 
   SingleProductWidget({required this.product, required this.press});
   @override
@@ -60,7 +59,8 @@ class SingleProductWidget extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
-                      '${formatCurrency.format(product.price)}',
+                      NumberFormat.currency(name: 'COP \$')
+                          .format(product.price),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color(0xff772ce8),

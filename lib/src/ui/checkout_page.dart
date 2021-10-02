@@ -5,16 +5,12 @@ import 'package:oldwave/src/ui/base_state.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
-
 class CheckoutPage extends StatefulWidget {
-
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
 }
 
 class _CheckoutPageState extends BaseState<CheckoutPage, CheckoutPageBloc> {
-
-
   @override
   void initState() {
     super.initState();
@@ -49,7 +45,6 @@ class _CheckoutPageState extends BaseState<CheckoutPage, CheckoutPageBloc> {
   CheckoutPageBloc getBlocInstance() {
     return CheckoutPageBloc();
   }
-
 }
 
 class _CartList extends StatelessWidget {
@@ -82,8 +77,6 @@ class _CartList extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
-final formatCurrency = new NumberFormat.simpleCurrency();
-
   @override
   Widget build(BuildContext context) {
     var hugeStyle =
@@ -96,9 +89,11 @@ final formatCurrency = new NumberFormat.simpleCurrency();
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Consumer<CartProvider>(
-                builder: (context, cart, child) => Text(
-                    '${formatCurrency.format(cart.getTotalAmount())}',
-                    style: hugeStyle)),
+              builder: (context, cart, child) => Text(
+                  NumberFormat.currency(name: 'COP \$')
+                      .format(cart.getTotalAmount()),
+                  style: hugeStyle),
+            ),
             //SizedBox(width: 5),
             TextButton(
               onPressed: () {
@@ -114,39 +109,3 @@ final formatCurrency = new NumberFormat.simpleCurrency();
     );
   }
 }
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:oldwave/src/ui/widgets/nav_bar.dart';
-// import 'package:provider/provider.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-
-// class CheckoutPage extends StatelessWidget {
-//   const CheckoutPage({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Sample Code'),
-//         // // backgroundColor: Color(0xff772ce8),
-//         // // backgroundColor: Color(0xff9c65f9),
-//         backgroundColor: Color(0xff7444fb),
-//         // leading: ,
-//       ),
-//       body: Column(
-//         children: [
-//           SafeArea(child: NavBar()),
-//           Center(child: Text('You have pressed the button times.')),
-//         ],
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () => {},
-//         tooltip: 'Increment Counter',
-//         child: const Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }
