@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
-import 'package:oldwave/src/details/details_screen.dart';
 import 'package:oldwave/src/di/injector.dart';
-import 'package:oldwave/src/ui/product_list.dart';
 import 'base_state.dart';
 import 'widgets/banner_discount.dart';
 import 'widgets/carrusel_categories.dart';
@@ -36,9 +34,7 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
             BannerDiscount(),
             FloatingActionButton(
               onPressed: () {
-                 Navigator.of(context).push(MaterialPageRoute(
-                   builder: (context) => ProductList(),
-                  ));
+                Navigator.pushNamed(context, 'list');
               },
             ),
             Padding(
