@@ -33,25 +33,32 @@ class _ProductListState extends BaseState<ProductList, ProductListBloc> {
 
         body:  SingleChildScrollView(
           child: Column(
-            children: <Widget>[
+            children: [
             SafeArea(
               child: NavBar(),
             ),
-            Search(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 90, // constrain height
-              child: ProductsWidget(products: widget.list, onService: _service),
-            )
-
+            Search(onService: _serviceNewProduct),
+            ...{if (widget.list.length != 0) SizedBox(
+                height: MediaQuery.of(context).size.height - 90, // constrain height
+                child: ProductsWidget(products: widget.list, onService: _service,),
+              ) else Text("No se encontraron productos disponibles")
+            },
           ],
             
           )
         ));
   }
 
+  void _serviceNewProduct(String valor) {
+    bloc!.getProductListByProduct(valor).then((productList) {
+      Navigator.of(context)
+      .push(MaterialPageRoute(
+        builder: (context) => ProductList(list: productList)));
+    }).catchError((error) => print(error));
+  }
+
   void _service(DetailParameters detailParameters) {
-    bloc!.getDetailPrductById(detailParameters.idProduct, detailParameters.idSeller)
-    .then((detail) {
+    bloc!.getDetailPrductById(detailParameters.idProduct, detailParameters.idSeller).then((detail) {
       Navigator.of(context)
       .push(MaterialPageRoute(
         builder: (context) => DetailScreen(detailProduct: detail )));
@@ -61,7 +68,8 @@ class _ProductListState extends BaseState<ProductList, ProductListBloc> {
   @override
   ProductListBloc getBlocInstance() {
     return ProductListBloc(
-      Injector().providerDetailProductUseCase()
+      Injector().providerDetailProductUseCase(),
+      Injector().provideProductListUseCase()
     );
   }
 
