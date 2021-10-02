@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
-import 'package:oldwave/src/ui/details_screen.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'package:oldwave/src/ui/product_list.dart';
 import 'base_state.dart';

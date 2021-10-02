@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/ui/details_screen.dart';
-import 'package:oldwave/src/ui/pages/checkout_page.dart';
+import 'package:oldwave/src/ui/checkout_page.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{

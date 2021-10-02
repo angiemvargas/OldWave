@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:oldwave/src/blocs/checkout_page_bloc.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
-
+import 'package:oldwave/src/ui/base_state.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
-class CheckoutPage extends StatelessWidget {
+
+class CheckoutPage extends StatefulWidget {
+
+  @override
+  _CheckoutPageState createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends BaseState<CheckoutPage, CheckoutPageBloc> {
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +44,12 @@ class CheckoutPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  CheckoutPageBloc getBlocInstance() {
+    return CheckoutPageBloc();
+  }
+
 }
 
 class _CartList extends StatelessWidget {
@@ -60,28 +82,24 @@ class _CartList extends StatelessWidget {
 }
 
 class _CartTotal extends StatelessWidget {
+final formatCurrency = new NumberFormat.simpleCurrency();
+
   @override
   Widget build(BuildContext context) {
     var hugeStyle =
-        Theme.of(context).textTheme.headline1!.copyWith(fontSize: 48);
+        Theme.of(context).textTheme.headline1!.copyWith(fontSize: 40);
 
     return SizedBox(
       height: 200,
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Another way to listen to a model's change is to include
-            // the Consumer widget. This widget will automatically listen
-            // to CartModel and rerun its builder on every change.
-            //
-            // The important thing is that it will not rebuild
-            // the rest of the widgets in this build method.
             Consumer<CartProvider>(
                 builder: (context, cart, child) => Text(
-                    '\$${cart.getTotalAmount().toString()}',
+                    '${formatCurrency.format(cart.getTotalAmount())}',
                     style: hugeStyle)),
-            const SizedBox(width: 24),
+            //SizedBox(width: 5),
             TextButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(

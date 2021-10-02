@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
+import 'package:intl/intl.dart';
 
 class TitleAndImage extends StatelessWidget {
   
   DetailProduct product;
+  final formatCurrency = new NumberFormat.simpleCurrency();
 
   TitleAndImage({required this.product});
 
@@ -29,7 +31,7 @@ class TitleAndImage extends StatelessWidget {
           SizedBox(height: oldWaveDefaultPaddin),
           Row(
             children: <Widget>[
-              Text("\$${product.price}"),
+              Text('${formatCurrency.format(product.price)}'),
               SizedBox(width: oldWaveDefaultPaddin),
               Expanded(
                 child: Image.network(

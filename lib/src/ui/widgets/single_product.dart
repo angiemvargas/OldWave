@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/models/product.dart';
+import 'package:intl/intl.dart';
 
 class SingleProductWidget extends StatelessWidget {
   final Product product;
   final VoidCallback press;
+  final formatCurrency = new NumberFormat.simpleCurrency();
 
-  const SingleProductWidget({Key ? key, required this.product, required this.press}) : super(key: key);
+  SingleProductWidget({required this.product, required this.press});
   @override
   Widget build(BuildContext context) {
 
@@ -53,7 +55,7 @@ class SingleProductWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text("\$${product.price}", 
+                  child: Text('${formatCurrency.format(product.price)}', 
                   style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff772ce8))),
                 ),
                 Container(
