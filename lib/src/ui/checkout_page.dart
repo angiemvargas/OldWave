@@ -90,8 +90,10 @@ class _CartTotal extends StatelessWidget {
           children: [
             Consumer<CartProvider>(
               builder: (context, cart, child) => Text(
-                  NumberFormat.currency(name: 'COP \$')
-                      .format(cart.getTotalAmount()),
+                  NumberFormat.currency(
+                    name: 'COP \$',
+                    decimalDigits: 0,
+                  ).format(cart.getTotalAmount()),
                   style: hugeStyle),
             ),
             //SizedBox(width: 5),

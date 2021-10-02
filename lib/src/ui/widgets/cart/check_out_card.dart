@@ -66,8 +66,10 @@ class SafeAreaContent extends StatelessWidget {
                 text: "Total:\n",
                 children: [
                   TextSpan(
-                    text: NumberFormat.currency(name: 'COP \$')
-                        .format(totalAmount),
+                    text: NumberFormat.currency(
+                      name: 'COP \$',
+                      decimalDigits: 0,
+                    ).format(totalAmount),
                     style: TextStyle(fontSize: 18, color: Colors.black),
                   ),
                 ],

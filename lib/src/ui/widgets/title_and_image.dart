@@ -29,7 +29,10 @@ class TitleAndImage extends StatelessWidget {
           SizedBox(height: oldWaveDefaultPaddin),
           Row(
             children: <Widget>[
-              Text(NumberFormat.currency(name: 'COP \$').format(product.price)),
+              Text(NumberFormat.currency(
+                name: 'COP \$',
+                decimalDigits: 0,
+              ).format(product.price)),
               SizedBox(width: oldWaveDefaultPaddin),
               Expanded(
                 child: Image.network(
