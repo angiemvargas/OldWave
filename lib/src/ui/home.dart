@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/home_bloc.dart';
-import 'package:oldwave/src/details/details_screen.dart';
+import 'package:oldwave/src/ui/details_screen.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'package:oldwave/src/ui/product_list.dart';
 import 'base_state.dart';
@@ -17,6 +17,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomePageState extends BaseState<Home, HomeBloc> {
+
+  String valor = '';
+
   @override
   void initState() {
     super.initState();
@@ -32,13 +35,50 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
             SafeArea(
               child: NavBar(),
             ),
-            Search(),
+            Container(
+              color: Color(0xff772ce8), height: 80.0, width: 392.0,
+              child: Container(
+                height: 36,
+                width: 337,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(18.0)
+                  ),
+                  margin: EdgeInsets.all(20),
+                  child: Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Icon(Icons.search, color: Color(0xff772ce8), size: 30, ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: SizedBox(
+                        width: 250,
+                        height: 60,
+                        child: TextField(  
+                          //obscureText: true,  
+                          onChanged: (text) {
+                            valor = text;
+                          },
+                          decoration: InputDecoration(  
+                            //border: OutlineInputBorder(),  
+                            //labelText: 'Password',  
+                            hintText: 'Buscar.....',  
+                          ),  
+                  ),
+                      ),
+                    )
+                  ],),
+                ),
+              ),
+            ),
             BannerDiscount(),
             FloatingActionButton(
               onPressed: () {
-                 Navigator.of(context).push(MaterialPageRoute(
+                _service();
+                 /*Navigator.of(context).push(MaterialPageRoute(
                    builder: (context) => ProductList(),
-                  ));
+                  ));*/
               },
             ),
             Padding(
@@ -65,20 +105,17 @@ class _HomePageState extends BaseState<Home, HomeBloc> {
   }
 
   void _service() {
-    bloc!.getProductListByProduct("iphone").then((productList) {
-      productList.forEach((element) {
-        print(element.toString());
-      });
+    bloc!.getProductListByProduct(valor).then((productList) {
+      Navigator.of(context)
+      .push(MaterialPageRoute(
+        builder: (context) => ProductList(list: productList)));
     }).catchError((error) => print(error));
-
-    // bloc!.getDetailPrductById('1', '3');
   }
 
   @override
   HomeBloc getBlocInstance() {
     return HomeBloc(
-      Injector().provideProductListUseCase(),
-      Injector().providerDetailProductUseCase(),
+      Injector().provideProductListUseCase()
     );
   }
 }

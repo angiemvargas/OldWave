@@ -7,8 +7,7 @@ import 'package:oldwave/src/resources/dtos/product_list_response.dart';
 class ProductListService {
   RestClientService restClientService = RestClientService();
 
-  Future<ProductListResponse> getProductList(
-      String baseUrl, String product) async {
+  Future<ProductListResponse> getProductList(String baseUrl, String product) async {
     String aux;
     var uri;
     if (baseUrl == Constant.url_back_fast_api) {

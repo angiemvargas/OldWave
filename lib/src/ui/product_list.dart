@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:oldwave/src/blocs/product_list_bloc.dart';
+import 'package:oldwave/src/models/detail_parameters.dart';
+import 'package:oldwave/src/ui/details_screen.dart';
 import 'widgets/products.dart';
 import 'widgets/nav_bar.dart';
 import 'widgets/search.dart';
-import 'package:oldwave/src/blocs/home_bloc.dart';
 import 'package:oldwave/src/di/injector.dart';
 import 'base_state.dart';
 import 'package:oldwave/src/models/product.dart';
 
 
 class ProductList extends StatefulWidget {
+  final List<Product> list;
   
-  const ProductList({ Key? key }) : super(key: key);
+  ProductList({required this.list});
 
   @override
   _ProductListState createState() => _ProductListState();
 }
 
-class _ProductListState extends BaseState<ProductList, HomeBloc> {
+class _ProductListState extends BaseState<ProductList, ProductListBloc> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +40,7 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
             Search(),
             SizedBox(
               height: MediaQuery.of(context).size.height - 90, // constrain height
-              child: ProductsWidget(products: bloc!.getProductListByProduct("iphone")),
+              child: ProductsWidget(products: widget.list, onService: _service),
             )
 
           ],
@@ -41,20 +49,19 @@ class _ProductListState extends BaseState<ProductList, HomeBloc> {
         ));
   }
 
-  void _service() {
-    // List<Product> list= [];
-    bloc!.getProductListByProduct("iphone").then((productList) {
-      productList.forEach((element) {
-        //list.add(element);
-      });
+  void _service(DetailParameters detailParameters) {
+    bloc!.getDetailPrductById(detailParameters.idProduct, detailParameters.idSeller)
+    .then((detail) {
+      Navigator.of(context)
+      .push(MaterialPageRoute(
+        builder: (context) => DetailScreen(detailProduct: detail )));
     }).catchError((error) => print(error));
   }
 
   @override
-  HomeBloc getBlocInstance() {
-    return HomeBloc(
-      Injector().provideProductListUseCase(),
-      Injector().providerDetailProductUseCase(),
+  ProductListBloc getBlocInstance() {
+    return ProductListBloc(
+      Injector().providerDetailProductUseCase()
     );
   }
 

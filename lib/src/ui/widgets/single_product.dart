@@ -33,7 +33,10 @@ class SingleProductWidget extends StatelessWidget {
                     topRight: Radius.circular(15),
                   ),
                   child: Image.network(
-                    product.thumbnail
+                    product.thumbnail,
+                    height: 150,
+                    width: 150,
+                    //fit: BoxFit.fitWidth,
                   )),
             ),
             Text(product.name, style: TextStyle(fontSize: 13.0)),

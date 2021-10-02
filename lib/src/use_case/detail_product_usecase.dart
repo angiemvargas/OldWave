@@ -7,7 +7,7 @@ class DetailProductUseCase {
 
   final DetailProductRepository repository = DetailProductAdapter();
 
-  Future<DetailProduct> getDetailProductById(String idProduct, String idSeller) {
+  Future<DetailProduct> getDetailProductById(int idProduct, int idSeller) {
     return repository.getDetailProductById(idProduct, idSeller);
   }
 }
