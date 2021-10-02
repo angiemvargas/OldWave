@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/ui/size_config.dart';
+import 'package:oldwave/src/ui/widgets/cart/cart_card.dart';
 import 'package:provider/provider.dart';
 
 class Body extends StatefulWidget {
@@ -41,7 +42,10 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            // child: CartCard(cart: demoCarts[index]),
+            // child:
+            // CartCard(
+            //   product: cartProvider.getSpecificItemFromCartProvider(id),
+            // ),
             child: Text(
               cartProvider.flutterCart.cartItem[index].productName.toString(),
             ),

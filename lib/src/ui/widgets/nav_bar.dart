@@ -29,7 +29,9 @@ class NavBar extends StatelessWidget {
           children: [
             Container(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'checkout');
+                },
                 child: SvgPicture.asset('assets/imgs/login-icon.svg',
                     height: 25, width: 25, color: Color(0xff772ce8)),
               ),
@@ -38,7 +40,7 @@ class NavBar extends StatelessWidget {
               // margin: const EdgeInsets.only(right: 28, left: 22),
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, 'checkout');
+                  Navigator.pushNamed(context, 'cart');
                 },
                 child: SvgPicture.asset('assets/imgs/carrito-icon.svg',
                     height: 30, width: 30, color: Color(0xff772ce8)),
