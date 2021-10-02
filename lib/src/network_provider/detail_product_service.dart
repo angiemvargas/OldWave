@@ -9,8 +9,17 @@ class DetailProductService {
 
   RestClientService restClientService = RestClientService() ;
   
-  Future<DetailProduct> getDetailProduct(String baseUrl, String idProduct) async {
-    var uri = Uri.https(baseUrl, Constant.path_detail_product+idProduct);
+  Future<DetailProduct> getDetailProduct(String baseUrl, int idProduct) async {
+    String aux;
+    var uri;
+    if (baseUrl == Constant.url_back_fast_api) {
+      aux = '/api/v1/items/';
+      uri = Uri.http(baseUrl, aux+"$idProduct");
+    } else {
+      aux = Constant.path_detail_product;
+      uri = Uri.https(baseUrl, aux+"$idProduct");
+    }
+    //var uri = Uri.https(baseUrl, Constant.path_detail_product+idProduct);
     GenericResponse response = await restClientService.get(uri);
     return _detailProductResponseFromJson((response.statusCode == 0) ? response.data : null);
   }

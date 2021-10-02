@@ -10,16 +10,15 @@ class ProductListResponse {
     this.query,
     this.total,
     this.items,
-    this.seller
+    this.seller,
   );
 
-  ProductListResponse.fromJson(Map<String, dynamic> json){
+  ProductListResponse.fromJson(Map<String, dynamic> json) {
     query = json['query'];
     total = json['total'];
     json['items'].forEach((v) => items.add(new ProductResponse.fromJson(v)));
-    seller = new SellerResponse.fromJson(json['seller']); 
+    seller = new SellerResponse.fromJson(json['seller']);
   }
-  
 }
 
 class SellerResponse {
@@ -28,10 +27,10 @@ class SellerResponse {
 
   SellerResponse(
     this.id,
-    this.name
+    this.name,
   );
 
-  SellerResponse.fromJson(Map<String, dynamic> json){
+  SellerResponse.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }

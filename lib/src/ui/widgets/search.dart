@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Search extends StatelessWidget{
+
+  String valor = '';
+  final ValueChanged<String> onService;
+
+  Search({required this.onService });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,13 +20,32 @@ class Search extends StatelessWidget{
           ),
           margin: EdgeInsets.all(20),
           child: Row(children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.search, color: Color(0xff772ce8), size: 30, ),
+            TextButton(
+              onPressed: () {
+                onService(valor);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Icon(Icons.search, color: Color(0xff772ce8), size: 30, ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text('Estoy buscando ...'),
+              child: SizedBox(
+                width: 250,
+                height: 60,
+                child: TextField(  
+                  //obscureText: true,  
+                  onChanged: (text) {
+                    valor = text;
+                  },
+                  decoration: InputDecoration(  
+                    //border: OutlineInputBorder(),  
+                    //labelText: 'Password',  
+                    hintText: 'Estoy buscando.....',  
+                  ),  
+                ),
+              ),
             )
           ],),
         ),

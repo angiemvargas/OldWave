@@ -18,6 +18,11 @@ class Product {
     this.rating,
     this.seller,
   );
+
+  @override
+  String toString() {
+    return "(id: $id, name: $name, brand: $brand, thumbnail: $thumbnail, city: $city , price: $price, rating: $rating, seller: $seller)";
+  }
 }
 
 class City {
@@ -26,10 +31,10 @@ class City {
 
   City(
     this.id,
-    this.name
+    this.name,
   );
 
-  City.fromJson(Map<String, dynamic> json){
+  City.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }
@@ -41,6 +46,6 @@ class Seller {
 
   Seller(
     this.id,
-    this.name
+    this.name,
   );
 }
