@@ -14,24 +14,24 @@ class CheckoutCard extends StatelessWidget {
     const kTextColor = Color(0xFF757575);
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: getProportionateScreenWidth(15),
+        vertical: getProportionateScreenWidth(10),
         horizontal: getProportionateScreenWidth(30),
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: Colors.white,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
           // bottomRight: Radius.circular(10),
           // bottomLeft: Radius.circular(10),
         ),
-        // boxShadow: [
-        //   BoxShadow(
-        //     offset: Offset(0, -5),
-        //     blurRadius: 20,
-        //     color: Theme.of(context).accentColor.withOpacity(0.5),
-        //   ),
-        // ],
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, -5),
+            blurRadius: 20,
+            color: Theme.of(context).accentColor.withOpacity(0.1),
+          ),
+        ],
       ),
       child: SafeArea(
         child: SafeAreaContent(kTextColor: kTextColor),
@@ -84,7 +84,7 @@ class SafeAreaContent extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),
                   primary: Colors.white,
-                  backgroundColor: Theme.of(context).accentColor,
+                  backgroundColor: Theme.of(context).primaryColor,
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
