@@ -9,10 +9,9 @@ import 'package:oldwave/src/di/injector.dart';
 import 'base_state.dart';
 import 'package:oldwave/src/models/product.dart';
 
-
 class ProductList extends StatefulWidget {
   final List<Product> list;
-  
+
   ProductList({required this.list});
 
   @override
@@ -20,7 +19,6 @@ class ProductList extends StatefulWidget {
 }
 
 class _ProductListState extends BaseState<ProductList, ProductListBloc> {
-
   @override
   void initState() {
     super.initState();
@@ -29,39 +27,47 @@ class _ProductListState extends BaseState<ProductList, ProductListBloc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-
-        body:  SingleChildScrollView(
-          child: Column(
-            children: [
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
             SafeArea(
               child: NavBar(),
             ),
             Search(onService: _serviceNewProduct),
-            ...{if (widget.list.length != 0) SizedBox(
-                height: MediaQuery.of(context).size.height - 90, // constrain height
-                child: ProductsWidget(products: widget.list, onService: _service,),
-              ) else Text("No se encontraron productos disponibles")
+            ...{
+              if (widget.list.length != 0)
+                SizedBox(
+                  height: MediaQuery.of(context).size.height -
+                      90, // constrain height
+                  child: ProductsWidget(
+                    products: widget.list,
+                    onService: _service,
+                  ),
+                )
+              else
+                Text("No se encontraron productos disponibles")
             },
           ],
-            
-          )
-        ));
+        ),
+      ),
+    );
   }
 
   void _serviceNewProduct(String valor) {
     bloc!.getProductListByProduct(valor).then((productList) {
-      Navigator.of(context)
-      .push(MaterialPageRoute(
-        builder: (context) => ProductList(list: productList)));
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ProductList(list: productList)));
     }).catchError((error) => print(error));
   }
 
   void _service(DetailParameters detailParameters) {
-    bloc!.getDetailPrductById(detailParameters.idProduct, detailParameters.idSeller).then((detail) {
-      Navigator.of(context)
-      .push(MaterialPageRoute(
-        builder: (context) => DetailScreen(detailProduct: detail )));
+    bloc!
+        .getDetailPrductById(
+            detailParameters.idProduct, detailParameters.idSeller)
+        .then((detail) {
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DetailScreen(detailProduct: detail)));
     }).catchError((error) => print(error));
   }
 
@@ -69,9 +75,7 @@ class _ProductListState extends BaseState<ProductList, ProductListBloc> {
   ProductListBloc getBlocInstance() {
     return ProductListBloc(
       Injector().providerDetailProductUseCase(),
-      Injector().provideProductListUseCase()
+      Injector().provideProductListUseCase(),
     );
   }
-
 }
-

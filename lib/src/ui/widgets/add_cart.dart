@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/models/detail_product.dart';
+import 'package:oldwave/src/ui/cart_screen.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +32,8 @@ class AddToCart extends StatelessWidget {
                 "assets/imgs/carrito-icon.svg",
               ),
               onPressed: () {
-                Navigator.pushNamed(context, 'checkout');
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => CartScreen()));
               },
             ),
           ),

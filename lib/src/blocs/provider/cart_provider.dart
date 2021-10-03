@@ -9,7 +9,7 @@ class CartProvider extends ChangeNotifier {
   late CartResponseWrapper cartResponseWrapper;
   addToCart(DetailProduct _productElement, {int funcQuantity = 0}) async {
     cartResponseWrapper = flutterCart.addToCart(
-        productId: _productElement.id,
+        productId: '${_productElement.seller.name} ${_productElement.id}',
         unitPrice: _productElement.price,
         productName: _productElement.name,
         quantity: funcQuantity == 0 ? 1 : funcQuantity,
@@ -19,6 +19,10 @@ class CartProvider extends ChangeNotifier {
 
   bool cartIsEmpty() {
     return flutterCart.cartItem.length == 0;
+  }
+
+  int cartLength() {
+    return flutterCart.cartItem.length;
   }
 
   deleteItemFromCart(int index) async {
