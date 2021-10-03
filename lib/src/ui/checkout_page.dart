@@ -58,7 +58,7 @@ class _CartList extends StatelessWidget {
     var cartProvider = context.watch<CartProvider>();
 
     return ListView.builder(
-      itemCount: cartProvider.flutterCart.cartItem.length,
+      itemCount: cartProvider.cartLength(),
       itemBuilder: (context, index) => ListTile(
         leading: const Icon(Icons.done),
         trailing: IconButton(

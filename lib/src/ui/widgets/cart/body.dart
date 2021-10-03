@@ -17,16 +17,16 @@ class _BodyState extends State<Body> {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
-        itemCount: cartProvider.flutterCart.cartItem.length,
+        itemCount: cartProvider.cartLength(),
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
             // key: Key(demoCarts[index].product.id.toString()),
-            key: Key('$index'),
+            key: Key(cartProvider.flutterCart.cartItem[index].productId),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
               setState(() {
-                cartProvider.decrementItemFromCartProvider(index);
+                cartProvider.deleteItemFromCart(index);
               });
             },
             background: Container(
@@ -42,12 +42,9 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            // child:
-            // CartCard(
-            //   product: cartProvider.getSpecificItemFromCartProvider(id),
-            // ),
-            child: Text(
-              cartProvider.flutterCart.cartItem[index].productName.toString(),
+            child: CartCard(
+              cartItem: cartProvider.flutterCart.cartItem[index],
+              indexCartItem: index,
             ),
           ),
         ),

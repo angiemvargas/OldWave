@@ -23,7 +23,6 @@ class _CartScreenState extends BaseState<CartScreen, CheckoutPageBloc> {
     return Scaffold(
       appBar: buildAppBar(context),
       body: Body(),
-      // body: CartCard(cart: cart),
       bottomNavigationBar: CheckoutCard(),
     );
   }
@@ -31,7 +30,7 @@ class _CartScreenState extends BaseState<CartScreen, CheckoutPageBloc> {
   AppBar buildAppBar(BuildContext context) {
     var cartProvider = context.watch<CartProvider>();
 
-    int itemCount = cartProvider.flutterCart.cartItem.length;
+    int itemCount = cartProvider.cartLength();
     String msg = "$itemCount ";
 
     if (itemCount == 1) {
