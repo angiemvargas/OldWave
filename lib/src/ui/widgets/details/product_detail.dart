@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:oldwave/src/ui/widgets/title_and_image.dart';
-import 'package:oldwave/src/ui/widgets/description.dart';
+import 'package:oldwave/src/ui/widgets/details/cart_counter.dart';
+import 'package:oldwave/src/ui/widgets/details/title_and_image.dart';
+import 'package:oldwave/src/ui/widgets/details/description.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
-import 'add_cart.dart';
+import '../add_cart.dart';
 
 class ProductDetail extends StatelessWidget {
 
@@ -42,6 +43,7 @@ class ProductDetail extends StatelessWidget {
                     children: <Widget>[
                       Description(product: product,),
                       AddToCart(product: product,),
+                      CartCounter(product: product,)
                     ],
                   ),
                 ),
