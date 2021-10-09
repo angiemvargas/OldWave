@@ -4,22 +4,29 @@ import 'package:flutter_cart/model/cart_model.dart';
 import 'package:intl/intl.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
+import 'package:oldwave/src/ui/widgets/details/product_detail.dart';
 import 'package:provider/provider.dart';
 import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/ui/size_config.dart';
 
-class CartCounter extends StatelessWidget {
-  CartCounter({required this.product});
-
+class CartCounter extends StatefulWidget {
   final DetailProduct product;
-  int numOfItems = 1;
-
+  Counter numItem;
+  CartCounter({required this.product, required this.numItem});
+  @override
+  _CartCounterState createState() => _CartCounterState (); 
+}
+  
+class _CartCounterState extends State<CartCounter>{
+  
   @override
   Widget build(BuildContext context) {
+    Counter numItem = widget.numItem;
+    var product= widget.product;
     return Row(
       children: [
         SizedBox(
-          width: 88,
+          width: 50,
           child: AspectRatio(
             aspectRatio: 0.88,
             child: GestureDetector(
@@ -39,65 +46,54 @@ class CartCounter extends StatelessWidget {
                   ],
                 ),
                 child: Image.network(
-                  product.pictures.first,
+
+                  product.seller.logo,
                   fit: BoxFit.scaleDown,
                 ),
               ),
             ),
           ),
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 15),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 120,
+              width: 80,
               child: Text(
-                product.name,
+                product.seller.name,
                 style: TextStyle(color: Colors.black, fontSize: 16),
                 overflow: TextOverflow.fade,
                 maxLines: 3,
               ),
             ),
             SizedBox(height: 10),
-            Text.rich(
-              TextSpan(
-                text: NumberFormat.currency(
-                  name: 'COP \$',
-                  decimalDigits: 0,
-                ).format(product.price),
-                style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).accentColor),
-                children: [
-                  TextSpan(
-                      text: " 1",
-                      style: Theme.of(context).textTheme.bodyText1),
-                ],
-              ),
-            ),
+            
           ],
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 10),
         IconButton(
           onPressed: () {
-            //cartProvider.decrementItemFromCartProvider();
-            
+            if(numItem.numItem > 1){
+            setState((){
+              numItem.down();
+            });
+            }
           },
           icon: Icon(Icons.remove),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: oldWaveDefaultPaddin / 2),
           child: Text(
-            // if our item is less  then 10 then  it shows 01 02 like that
-            numOfItems.toString().padLeft(2, "0"),
+            numItem.numItem.toString().padLeft(2, "0"),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
         IconButton(
           onPressed: () {
-
-            //cartProvider.incrementItemToCartProvider(indexCartItem);
+            setState((){
+              numItem.up();
+            });
           },
           icon: Icon(Icons.add),
         ),
@@ -105,4 +101,6 @@ class CartCounter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
     );
   }
+
 }
+
