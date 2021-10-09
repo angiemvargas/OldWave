@@ -4,12 +4,14 @@ import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/cart_screen.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
+import 'package:oldwave/src/ui/widgets/details/product_detail.dart';
 import 'package:provider/provider.dart';
 
 class AddToCart extends StatelessWidget {
   DetailProduct product;
+  Counter numItem;
 
-  AddToCart({required this.product});
+  AddToCart({required this.product, required this.numItem});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class AddToCart extends StatelessWidget {
               child: Consumer<CartProvider>(builder: (context, cart, child) {
                 return _AddButton(
                   product: product,
+                  numItem: numItem,
                 );
               }),
             ),
@@ -55,8 +58,9 @@ class AddToCart extends StatelessWidget {
 
 class _AddButton extends StatefulWidget {
   final DetailProduct product;
+  Counter numItem ;
 
-  _AddButton({required this.product});
+  _AddButton({required this.product, required this.numItem});
 
   @override
   __AddButtonState createState() => __AddButtonState();
@@ -75,7 +79,7 @@ class __AddButtonState extends State<_AddButton> {
   Widget build(BuildContext context) {
     return OutlinedButton(
       onPressed: () {
-        _cartProvider.addToCart(widget.product);
+        _cartProvider.addToCart(widget.product,funcQuantity: widget.numItem.numItem);
         setState(() {});
       },
       style: OutlinedButton.styleFrom(

@@ -11,14 +11,10 @@ class TitleAndImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: oldWaveDefaultPaddin),
+      padding: const EdgeInsets.symmetric(horizontal: oldWaveDefaultPaddin/2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "Aristocratic Hand Bag",
-            style: TextStyle(color: Colors.white),
-          ),
           Text(
             product.name,
             style: Theme.of(context)
@@ -26,7 +22,7 @@ class TitleAndImage extends StatelessWidget {
                 .headline4!
                 .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: oldWaveDefaultPaddin),
+          SizedBox(height: oldWaveDefaultPaddin/2),
           Row(
             children: <Widget>[
               Text(NumberFormat.currency(
