@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "670721548542",
+    "project_id": "oldwave-b8573",
+    "storage_bucket": "oldwave-b8573.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670721548542:android:17f4fe4cb35f61862c05af",
+        "android_client_info": {
+          "package_name": "com.example.oldwave"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670721548542-s8bgplr1vh7f0idag374hrf7rnvt5bj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYOf2LgElrjWDdBmROMnqr_Gl03WfF7Ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670721548542-s8bgplr1vh7f0idag374hrf7rnvt5bj4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
