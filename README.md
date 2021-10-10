@@ -1,3 +1,5 @@
+[![Codemagic build status](https://api.codemagic.io/apps/6163423c3719a1fc7546e104/6163423c3719a1fc7546e103/status_badge.svg)](https://codemagic.io/apps/6163423c3719a1fc7546e104/6163423c3719a1fc7546e103/latest_build)
+
 # oldwave
 
 A new Flutter project.

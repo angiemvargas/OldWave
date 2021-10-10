@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 final appTheme = ThemeData(
   primaryColor: Color(0xff7444fb),
-  // primaryColor: Color(0xff32d1f7),
+  accentColor: Color(0xff32d1f7),
   textTheme: const TextTheme(
     headline1: TextStyle(
       fontFamily: 'Poppins',
