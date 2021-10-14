@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:oldwave/src/blocs/detail_product_bloc.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/base_state.dart';
-import 'package:oldwave/src/ui/widgets/details/product_detail.dart';
-
+import 'package:oldwave/src/ui/widgets/details 2/components/body.dart';
 class DetailScreen extends StatefulWidget {
   DetailProduct detailProduct;
 
@@ -25,7 +24,7 @@ class _DetailScreenState extends BaseState<DetailScreen, DetailProductBloc>{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: buildAppBar(context),
-      body: ProductDetail(product: widget.detailProduct),
+      body: Body(product: widget.detailProduct),
     );
   }
 

@@ -4,8 +4,10 @@ import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/cart_screen.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
-import 'package:oldwave/src/ui/widgets/details/product_detail.dart';
+
 import 'package:provider/provider.dart';
+
+import 'counter.dart';
 
 class AddToCart extends StatelessWidget {
   DetailProduct product;

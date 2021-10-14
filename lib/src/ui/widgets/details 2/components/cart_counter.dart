@@ -1,13 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_cart/model/cart_model.dart';
-import 'package:intl/intl.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
-import 'package:oldwave/src/ui/widgets/details/product_detail.dart';
-import 'package:provider/provider.dart';
-import 'package:oldwave/src/blocs/provider/cart_provider.dart';
 import 'package:oldwave/src/ui/size_config.dart';
+
+import 'counter.dart';
 
 class CartCounter extends StatefulWidget {
   final DetailProduct product;
