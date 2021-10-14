@@ -45,7 +45,7 @@ class _CartScreenState extends BaseState<CartScreen, CheckoutPageBloc> {
         children: [
           Text(
             "Carrito de compras",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
           Text(
             msg,
