@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:oldwave/src/models/detail_product.dart';
 import 'package:oldwave/src/ui/material_ui/constants.dart';
 import 'package:oldwave/src/ui/size_config.dart';
+import 'package:oldwave/src/ui/widgets/details/components/rounded_icon_btn.dart';
 
 import 'counter.dart';
 
@@ -23,7 +24,7 @@ class _CartCounterState extends State<CartCounter>{
     return Row(
       children: [
         SizedBox(
-          width: 50,
+          width: 60,
           child: AspectRatio(
             aspectRatio: 0.88,
             child: GestureDetector(
@@ -31,21 +32,14 @@ class _CartCounterState extends State<CartCounter>{
                 // dirigir a detalle?
               },
               child: Container(
-                padding: EdgeInsets.all(getProportionateScreenWidth(2)),
+                padding: EdgeInsets.all(getProportionateScreenWidth(10)),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(.4),
-                        offset: Offset(3, 2),
-                        blurRadius: 7)
-                  ],
+                  
                 ),
                 child: Image.network(
-
                   product.seller.logo,
-                  fit: BoxFit.scaleDown,
                 ),
               ),
             ),
@@ -56,10 +50,10 @@ class _CartCounterState extends State<CartCounter>{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 80,
+              width: 120,
               child: Text(
-                product.seller.name,
-                style: TextStyle(color: Colors.black, fontSize: 16),
+                'vendedor : '+product.seller.name,
+                style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
                 overflow: TextOverflow.fade,
                 maxLines: 3,
               ),
@@ -69,16 +63,17 @@ class _CartCounterState extends State<CartCounter>{
           ],
         ),
         SizedBox(width: 10),
-        IconButton(
-          onPressed: () {
-            if(numItem.numItem > 1){
-            setState((){
-              numItem.down();
-            });
+        RoundedIconBtn(
+            icon: Icons.remove,
+            showShadow: true,
+            press: () {
+              if(numItem.numItem > 1){
+                setState((){
+                numItem.down();
+              });
             }
-          },
-          icon: Icon(Icons.remove),
-        ),
+            },
+          ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: oldWaveDefaultPaddin / 2),
           child: Text(
@@ -86,14 +81,14 @@ class _CartCounterState extends State<CartCounter>{
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        IconButton(
-          onPressed: () {
-            setState((){
-              numItem.up();
-            });
-          },
-          icon: Icon(Icons.add),
-        ),
+        RoundedIconBtn(
+            icon: Icons.add,
+            showShadow: true,
+            press: () {
+              setState((){
+              numItem.up();});
+            },
+          ),
       ],
       mainAxisAlignment: MainAxisAlignment.spaceAround,
     );

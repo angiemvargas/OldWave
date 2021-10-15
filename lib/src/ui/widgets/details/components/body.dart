@@ -32,7 +32,7 @@ class Body extends StatelessWidget {
                 pressOnSeeMore: () {},
               ),
               TopRoundedContainer(
-                color: Color(0xFFF6F7F9),
+                color: Colors.white,
                 child: Column(
                    children: [
                      CartCounter(product: product,numItem:counter),
