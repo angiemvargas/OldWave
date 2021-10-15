@@ -36,7 +36,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.byType(ProductList), findsOneWidget);
       expect(find.byType(Home), findsNothing);
-      // expect(find.text('cafetera'), findsOneWidget);
+      expect(find.text('cafetera'), findsOneWidget);
     });
   });
 }
