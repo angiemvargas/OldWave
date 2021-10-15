@@ -4,7 +4,7 @@ class Constant {
   // static const url_back_spring_boot = 'localhost:8080'; //Ya o existe el grupo
   static const url_back_flask = '54.183.179.149:8080';
   // static const url_back_flask = 'proyectoflaskoldwave.herokuapp.com'; //test
-  static const url_back_graphql = 'localhost:8080';
+  static const url_back_graphql = 'http://54.146.30.122:3100/graphql';
   static const path_product_list = '/api/search';
   static const path_detail_product = '/api/item/';
 

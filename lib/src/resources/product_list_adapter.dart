@@ -15,8 +15,8 @@ class ProductListAdapter implements ProductListRepository {
     ProductListResponse fastapi =
         await service.getProductList(Constant.url_back_fast_api, product);
 
-    // ProductListResponse springBoot =
-    //     await service.getProductList(Constant.url_back_spring_boot, product);
+    ProductListResponse graphQl =
+         await service.getProductList('', product);
 
     ProductListResponse flask =
         await service.getProductList(Constant.url_back_flask, product);
@@ -28,12 +28,12 @@ class ProductListAdapter implements ProductListRepository {
       });
     }
 
-    // if (springBoot.total != 0) {
-    //   springBoot.items.forEach((element) {
-    //     productList
-    //         .add(mapperProductResponseToProduct(element, springBoot.seller));
-    //   });
-    // }
+    if (graphQl.total != 0) {
+      graphQl.items.forEach((element) {
+        productList
+            .add(mapperProductResponseToProduct(element, graphQl.seller));
+      });
+    }
 
     if (flask.total != 0) {
       flask.items.forEach((element) {
