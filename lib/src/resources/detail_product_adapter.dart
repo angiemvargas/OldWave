@@ -17,11 +17,7 @@ class DetailProductAdapter implements DetailProductRepository {
       product =
           await service.getDetailProduct(Constant.url_back_fast_api, idProduct);
     }
-    // asumimos que spring tiene id de seller 2, pendiente de confirmar
-    // if(idSeller == 2){
-    //   product = await service.getDetailProduct(Constant.url_back_spring_boot, idProduct);
-    // }
-
+    
     if (idSeller == 1) {
       product =
           await service.getDetailProduct(Constant.url_back_flask, idProduct);
