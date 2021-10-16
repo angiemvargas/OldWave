@@ -61,7 +61,7 @@ class AddToCart extends StatelessWidget {
 
 class _AddButton extends StatefulWidget {
   final DetailProduct product;
-  Counter numItem ;
+  Counter numItem;
 
   _AddButton({required this.product, required this.numItem});
 
@@ -77,6 +77,7 @@ class __AddButtonState extends State<_AddButton> {
     _cartProvider = Provider.of<CartProvider>(context, listen: false);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -90,11 +91,12 @@ class __AddButtonState extends State<_AddButton> {
           backgroundColor: oldWaveColor,
         ),
         onPressed: () {
-        _cartProvider.addToCart(widget.product,funcQuantity: widget.numItem.numItem);
-        setState(() {});
-      },
+          _cartProvider.addToCart(widget.product,
+              funcQuantity: widget.numItem.numItem);
+          setState(() {});
+        },
         child: Text(
-          'Buy',
+          'Comprar',
           style: TextStyle(
             fontSize: getProportionateScreenWidth(18),
             color: Colors.white,
@@ -103,6 +105,4 @@ class __AddButtonState extends State<_AddButton> {
       ),
     );
   }
-  
-  
 }
