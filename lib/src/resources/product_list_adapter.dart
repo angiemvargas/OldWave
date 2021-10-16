@@ -15,8 +15,7 @@ class ProductListAdapter implements ProductListRepository {
     ProductListResponse fastapi =
         await service.getProductList(Constant.url_back_fast_api, product);
 
-    ProductListResponse graphQl =
-         await service.getProductList('', product);
+    ProductListResponse graphQl = await service.getProductList('', product);
 
     ProductListResponse flask =
         await service.getProductList(Constant.url_back_flask, product);

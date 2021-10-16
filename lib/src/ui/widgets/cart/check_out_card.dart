@@ -93,8 +93,8 @@ class SafeAreaContent extends StatelessWidget {
                 child: Text(
                   'Continuar compra',
                   style: TextStyle(
-                    fontSize: getProportionateScreenWidth(18),
-                    color: Colors.black,
+                    fontSize: getProportionateScreenWidth(14),
+                    color: Colors.white,
                   ),
                 ),
               ),

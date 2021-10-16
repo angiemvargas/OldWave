@@ -40,12 +40,14 @@ class _CartScreenState extends BaseState<CartScreen, CheckoutPageBloc> {
     }
 
     return AppBar(
+      backgroundColor: Theme.of(context).primaryColor,
+      // backgroundColor: Colors.green,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             "Carrito de compras",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
           Text(
             msg,

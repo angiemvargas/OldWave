@@ -10,13 +10,15 @@ class DetailProductService {
 
   Future<DetailProduct> getDetailProduct(String baseUrl, int idProduct) async {
     String aux;
+    var uri;
 
     if (baseUrl == Constant.url_back_fast_api) {
       aux = '/api/v1/items/';
+      uri = Uri.https(baseUrl, aux + "$idProduct");
     } else {
       aux = Constant.path_detail_product;
+      uri = Uri.http(baseUrl, aux + "$idProduct");
     }
-    var uri = Uri.http(baseUrl, aux + "$idProduct");
     //var uri = Uri.https(baseUrl, Constant.path_detail_product+idProduct);
     GenericResponse response = await restClientService.get(uri);
     return _detailProductResponseFromJson(
