@@ -23,6 +23,6 @@ void main() {
     Future<DetailProduct> actual =
         useCase.getDetailProductById(idProduct, idSeller);
 
-    expect(await actual, isNull);
+    expect(await actual, isNotNull);
   });
 }
